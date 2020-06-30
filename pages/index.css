@@ -2,3 +2,5 @@
 @import url(../fonts/inter-3.13/inter-web/inter.css);
 @import url(../blocks/theme/theme.css);
 @import url(../blocks/header/header.css);
+@import url(../blocks/profile/profile.css);
+@import url(../blocks/avatar-info-wrapper/avatar-info-wrapper.css);
