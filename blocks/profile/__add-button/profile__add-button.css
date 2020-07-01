@@ -3,12 +3,19 @@
     display: flex;
     align-items: center;
     border: 2px solid #FFFFFF;
-    box-sizing: border-box;
     border-radius: 2px;
     padding: 14px 64px;
+    transition: .2s linear;
 }
 
 .profile__add-button:hover {
     border: 2px solid rgba(255, 255, 255, 0.6);
     opacity: 0.6;
+}
+
+@media all and (min-width: 299px) and (max-width: 1199px) {
+    .profile__add-button {
+        margin-top: 36px;
+        padding: 17px 132px;
+    }
 }

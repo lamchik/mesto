@@ -1,0 +1,11 @@
+.container {
+    max-width: 1200px;
+    padding: 0 119px 0;
+    margin: auto;
+}
+
+@media all and (min-width: 299px) and (max-width: 1199px) {
+    .container{
+        padding: 0 19px 0;
+    }
+}

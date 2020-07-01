@@ -6,3 +6,10 @@
     line-height: 1.22;
     color: #545454;
 }
+
+@media all and (min-width: 299px) and (max-width: 1199px) {
+    .footer__text {
+        font-size: 0.8rem;
+        line-height: 1.06;
+    }
+}

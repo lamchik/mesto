@@ -7,3 +7,11 @@
     color: #ffffff;
     margin: 0 17px 0 0;
 }
+
+@media all and (min-width: 299px) and (max-width: 1199px) {
+    .profile__info-name {
+        font-size: 1.68rem;
+        line-height: 2.07;
+        margin-right: 11px;
+    }
+}

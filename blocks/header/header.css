@@ -7,3 +7,10 @@
     align-items: flex-start;
     border-bottom: 1px solid rgba(84, 84, 84, 0.7);
 }
+
+@media all and (min-width: 299px) and (max-width: 1199px) {
+    .header {
+        margin-top: 28px;
+        padding-bottom: 31px;
+    }
+}
