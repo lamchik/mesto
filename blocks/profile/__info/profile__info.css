@@ -1,8 +1,7 @@
 .profile__info {
-    max-width: 336px;
     display: flex;
     align-items: center;
-    flex-wrap: wrap;
+    justify-content: center;
 }
 
 @media all and (min-width: 299px) and (max-width: 1199px) {

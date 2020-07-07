@@ -1,0 +1,9 @@
+.popup__description {
+    margin-bottom: 48px;
+    border-width: 0 0 1px 0;
+    padding-bottom: 13px;
+}
+
+.popup__description:focus {
+    outline: none;
+}

@@ -1,11 +1,9 @@
 .profile__add-button {
-    max-width: 150px;
-    display: flex;
-    align-items: center;
     border: 2px solid #FFFFFF;
     border-radius: 2px;
     padding: 14px 64px;
     transition: .2s linear;
+    cursor: pointer;
 }
 
 .profile__add-button:hover {

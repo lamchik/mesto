@@ -1,0 +1,4 @@
+.profile__wraper-info-description {
+    display: flex;
+    flex-direction: column;
+}

@@ -3,6 +3,7 @@
     box-sizing: border-box;
     padding: 7px;
     transition: .2s linear;
+    cursor: pointer;
 }
 
 .profile__info-edit:hover {

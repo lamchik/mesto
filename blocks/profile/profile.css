@@ -5,6 +5,7 @@
 @import url(./__info-name/profile__info-name.css);
 @import url(./__info/profile__info.css);
 @import url(./__add-button-img/profile__add-button-img.css);
+@import url(./__wraper-info-description/profile__wraper-info-description.css);
 
 .profile {
     margin-top: 40px;
