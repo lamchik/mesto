@@ -1,3 +1,4 @@
 .place__like {
     object-fit: contain;
+    cursor: pointer;
 }

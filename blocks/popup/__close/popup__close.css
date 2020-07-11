@@ -11,3 +11,14 @@
     cursor: pointer;
 }
 
+/* в макете не было адаптива для попапа, поэтому сделала по-своему */
+@media all and (min-width: 299px) and (max-width: 1199px) {
+    .popup__close {
+        width: 20px;
+        height: 20px;
+        top: 15px;
+        right: 15px;
+        background: black;
+        border-radius: 3px;
+    }
+}

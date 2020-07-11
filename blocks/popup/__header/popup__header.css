@@ -7,3 +7,11 @@
     color: #000000;
     margin: 0 0 54px;
 }
+
+/* в макете не было адаптива для попапа, поэтому сделала по-своему */
+@media all and (min-width: 299px) and (max-width: 1199px) {
+    .popup__header {
+        font-size: 1.3rem;
+        margin-bottom: 20px;
+    }
+}

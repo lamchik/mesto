@@ -1,8 +1,3 @@
-@import url(./__name/place__name.css);
-@import url(./__like/place__like.css);
-@import url(./__like-name-wrap/place__like-name-wrap.css);
-@import url(./__img/place__img.css);
-
 .place {
     display: flex;
     flex-wrap: wrap;
