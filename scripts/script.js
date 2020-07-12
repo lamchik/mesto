@@ -40,7 +40,7 @@ function addPopup() {
 function closePopup() {
     popup.classList.remove('popup_opened');
 
-    button.removeEventListener('click', saveText);
+    button.removeEventListener('click', saveTextOnSubmit);
     document.removeEventListener('keydown', saveTestOnEnter);
 };
 
