@@ -5,7 +5,7 @@
     align-items: center;
 }
 
-@media all and (min-width: 299px) and (max-width: 1199px) {
+@media all and (max-width: 1199px) {
     .profile {
         margin-top: 42px;
         flex-direction: column;

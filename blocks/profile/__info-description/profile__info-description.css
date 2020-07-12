@@ -7,7 +7,7 @@
     margin: 0;
 }
 
-@media all and (min-width: 299px) and (max-width: 1199px) {
+@media all and (max-width: 1199px) {
     .profile__info-description {
         font-size: 0.87rem;
         line-height: 1.21;

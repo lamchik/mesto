@@ -14,7 +14,7 @@
 }
 
 /* в макете не было адаптива для попапа, поэтому сделала по-своему */
-@media all and (min-width: 299px) and (max-width: 1199px) {
+@media all and (max-width: 500px) {
     .popup__close {
         width: 20px;
         height: 20px;
