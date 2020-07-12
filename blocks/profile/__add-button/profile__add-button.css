@@ -4,6 +4,7 @@
     padding: 14px 64px;
     transition: .2s linear;
     cursor: pointer;
+    background: rgba(0, 0, 0, 0);
 }
 
 .profile__add-button:hover {

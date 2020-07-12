@@ -6,86 +6,93 @@
   <link rel="stylesheet" href="pages/index.css">
   <title>Mesto</title>
 </head>
-  <body class="theme container">
-    <header class="header">
-      <img class="header__logo" src="./images/logo.svg" alt="логотип сайта">
-    </header>
 
-    <section class="profile">
-      <div class="profile__avatar-info-wrapper">
-        <img class="profile__avatar" src="./images/avatar.jpg" alt="фото профиля">
-        <div class="profile__wraper-info-description">
-          <div class="profile__info">
-            <h1 class="profile__info-name">Жак-Ив Кусто</h1>
-            <img  class="profile__info-edit" src="./images/pen.svg" alt="карандашик">
-          </div>
-          <p class="profile__info-description">Исследователь океана</p>
-        </div>
-      </div>
-      <img class="profile__add-button" src="./images/add.svg" alt="плюс">
-    </section>
+<body class="theme container">
+  <header class="header">
+    <img class="header__logo" src="./images/logo.svg" alt="логотип сайта">
+  </header>
 
-    <section class="places">
-      <div class="place">
-        <img class="place__img" src="./images/baikal.jpg" alt="Байкал">
-        <div class="place__like-name-wrap">
-          <p class="place__name">Озеро Байкал</p>
-          <img class="place__like" src="./images/like.svg" alt="лайк">
+  <section class="profile">
+    <div class="profile__avatar-info-wrapper">
+      <img class="profile__avatar" src="./images/avatar.jpg" alt="фото профиля">
+      <div class="profile__wraper-info-description">
+        <div class="profile__info">
+          <h1 class="profile__info-name">Жак-Ив Кусто</h1>
+          <button class="profile__info-edit">
+            <img src="./images/pen.svg" alt="карандашик">
+          </button>
         </div>
+        <p class="profile__info-description">Исследователь океана</p>
       </div>
-      <div class="place">
-        <img class="place__img" src="images/elbrus.jpg" alt="Байкал">
-        <div class="place__like-name-wrap">
-          <p class="place__name">Гора Эльбрус</p>
-          <img class="place__like" src="./images/like.svg" alt="лайк">
-        </div>
-      </div>
-      <div class="place">
-        <img class="place__img" src="./images/laugavegur.jpg" alt="Байкал">
-        <div class="place__like-name-wrap">
-          <p class="place__name">Лёйгавегюр</p>
-          <img class="place__like" src="./images/like.svg" alt="лайк">
-        </div>
-      </div>
-      <div class="place">
-        <img class="place__img" src="./images/faroe.jpg" alt="Байкал">
-        <div class="place__like-name-wrap">
-          <p class="place__name">Фарерские острова</p>
-          <img class="place__like" src="./images/like.svg" alt="лайк">
-        </div>
-      </div>
-      <div class="place">
-        <img class="place__img" src="./images/maldives.jpg" alt="Байкал">
-        <div class="place__like-name-wrap">
-          <p class="place__name">Мальдивы</p>
-          <img class="place__like" src="./images/like.svg" alt="лайк">
-        </div>
-      </div>
-      <div class="place">
-        <img class="place__img" src="./images/niagarafalls.jpg" alt="Байкал">
-        <div class="place__like-name-wrap">
-          <p class="place__name">Ниагарский водопад</p>
-          <img class="place__like" src="./images/like.svg" alt="лайк">
-        </div>
-      </div>
-    </section>
+    </div>
+    <button class="profile__add-button">
+      <img src="./images/add.svg" alt="плюс">
+    </button>
+  </section>
 
-    <section class="popup">
-      <div class="popup__container">
-        <p class="popup__header">Редактировать профиль</p>
-        <div class="popup__wrapper-name-description">
-          <input class="popup__name" type="text" name="name">
-          <input class="popup__description" type="text" name="description">
-        </div>
-        <button class="popup__button">Сохранить</button>
-        <img class="popup__close" src="./images/close.svg" alt="крестик">
+  <section class="places">
+    <div class="place">
+      <img class="place__img" src="./images/baikal.jpg" alt="Байкал">
+      <div class="place__like-name-wrap">
+        <p class="place__name">Озеро Байкал</p>
+        <img class="place__like" src="./images/like.svg" alt="лайк">
       </div>
-    </section>
+    </div>
+    <div class="place">
+      <img class="place__img" src="images/elbrus.jpg" alt="Байкал">
+      <div class="place__like-name-wrap">
+        <p class="place__name">Гора Эльбрус</p>
+        <img class="place__like" src="./images/like.svg" alt="лайк">
+      </div>
+    </div>
+    <div class="place">
+      <img class="place__img" src="./images/laugavegur.jpg" alt="Байкал">
+      <div class="place__like-name-wrap">
+        <p class="place__name">Лёйгавегюр</p>
+        <img class="place__like" src="./images/like.svg" alt="лайк">
+      </div>
+    </div>
+    <div class="place">
+      <img class="place__img" src="./images/faroe.jpg" alt="Байкал">
+      <div class="place__like-name-wrap">
+        <p class="place__name">Фарерские острова</p>
+        <img class="place__like" src="./images/like.svg" alt="лайк">
+      </div>
+    </div>
+    <div class="place">
+      <img class="place__img" src="./images/maldives.jpg" alt="Байкал">
+      <div class="place__like-name-wrap">
+        <p class="place__name">Мальдивы</p>
+        <img class="place__like" src="./images/like.svg" alt="лайк">
+      </div>
+    </div>
+    <div class="place">
+      <img class="place__img" src="./images/niagarafalls.jpg" alt="Байкал">
+      <div class="place__like-name-wrap">
+        <p class="place__name">Ниагарский водопад</p>
+        <img class="place__like" src="./images/like.svg" alt="лайк">
+      </div>
+    </div>
+  </section>
 
-    <footer class="footer">
-      <p class="footer__text">&copy; 2020 Mesto Russia</p>
-    </footer>
+  <section class="popup">
+    <div class="popup__container">
+      <p class="popup__header">Редактировать профиль</p>
+      <form name="traveler-info" class="popup__wrapper-name-description">
+        <input class="popup__name" type="text" name="name">
+        <input class="popup__description" type="text" name="description">
+        <button type="submit" class="popup__button">Сохранить</button>
+      </form>
+      <button class="popup__close">
+        <img src="./images/close.svg" alt="крестик">
+      </button>
+    </div>
+  </section>
 
-    <script src="scripts/script.js"></script>
-  </body>
+  <footer class="footer">
+    <p class="footer__text">&copy; 2020 Mesto Russia</p>
+  </footer>
+
+  <script src="scripts/script.js"></script>
+</body>
 </html>
