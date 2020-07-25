@@ -58,18 +58,28 @@ ProfileAddButton.addEventListener('click', addPopupPlace);
 closePlaceButton.addEventListener('click', closePopupPlace);
 
 
-function addPlaceToBegining(image, title, alt) {
+function addPlace(image, title, alt) {
     const place = createPlace(image, title, alt);
 
     const section = document.querySelector('.places');
     section.prepend(place);
+
+    const places = section.querySelectorAll('.place');
+    const firstPlace = places[0];
+    function deletePlace() {
+        firstPlace.remove();
+    }
+    
+    const cart = firstPlace.querySelector('.place__cart');
+    cart.addEventListener('click', deletePlace);
+
 };
 
 function saveNewPlace(evt) {
     evt.preventDefault()
     let name = placeNameInput.value;
     let image = placeImageInput.value;
-    addPlaceToBegining(image, name, name);
+    addPlace(image, name, name);
     closePopupPlace();
 }
 
@@ -92,14 +102,6 @@ function createPlace(image, title, alt) {
     like.addEventListener('click', likedCard);
    
     return place;
-}
-
-
-function addPlace(image, title, alt) {
-    const place = createPlace(image, title, alt);
-
-    const section = document.querySelector('.places');
-    section.append(place);
 }
 
 
@@ -136,7 +138,7 @@ const allPlaces = [
     },
 ];
 
-for (let i = 0; i < allPlaces.length; i += 1) {
+for (let i = allPlaces.length - 1; i >= 0; i -= 1) {
     addPlace(allPlaces[i].image, allPlaces[i].title, allPlaces[i].alt);
 };
 
