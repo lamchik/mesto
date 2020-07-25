@@ -1,5 +1,5 @@
-.place__like {
-    background-image: url(../../../images/like.svg);
+.place__like_active {
+    background-image: url(../../../../images/blacklike.svg);
     width: 29px;
     height: 18px;
     background-repeat: no-repeat;

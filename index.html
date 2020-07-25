@@ -37,7 +37,7 @@
         <img class="place__cart" src="./images/group.svg" alt="корзина">
         <div class="place__like-name-wrap">
           <p class="place__name"></p>
-          <img class="place__like" src="./images/like.svg" alt="лайк">
+          <div class="place__like"></div>
         </div>
       </div>
     </template>
@@ -79,7 +79,7 @@
     </div> -->
   </section>
 
-  <section class="popup">
+  <section class="popup" id="popup-name">
     <div class="popup__container">
       <p class="popup__header">Редактировать профиль</p>
       <form name="traveler-info" class="popup__wrapper-name-description">
@@ -93,12 +93,12 @@
     </div>
   </section>
 
-  <section class="popup">
+  <section class="popup" id="popup-place">
     <div class="popup__container">
       <p class="popup__header">Новое место</p>
       <form name="traveler-info" class="popup__wrapper-name-description">
-        <input class="popup__name" type="text" name="name">
-        <input class="popup__description" type="text" name="description">
+        <input class="popup__name" type="text" name="name" placeholder="Название">
+        <input class="popup__description" type="text" name="description" placeholder="Ссылка на карточку">
         <button type="submit" class="popup__button">Создать</button>
       </form>
       <button class="popup__close">
