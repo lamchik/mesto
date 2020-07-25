@@ -31,14 +31,18 @@
   </section>
 
   <section class="places">
-    <div class="place">
-      <img class="place__img" src="./images/baikal.jpg" alt="Байкал">
-      <div class="place__like-name-wrap">
-        <p class="place__name">Озеро Байкал</p>
-        <img class="place__like" src="./images/like.svg" alt="лайк">
+    <template id="place">
+      <div class="place">
+        <img class="place__img">
+        <img class="place__cart" src="./images/group.svg" alt="корзина">
+        <div class="place__like-name-wrap">
+          <p class="place__name"></p>
+          <img class="place__like" src="./images/like.svg" alt="лайк">
+        </div>
       </div>
-    </div>
-    <div class="place">
+    </template>
+  
+    <!-- <div class="place">
       <img class="place__img" src="images/elbrus.jpg" alt="Эльбрус">
       <div class="place__like-name-wrap">
         <p class="place__name">Гора Эльбрус</p>
@@ -72,7 +76,7 @@
         <p class="place__name">Ниагарский водопад</p>
         <img class="place__like" src="./images/like.svg" alt="лайк">
       </div>
-    </div>
+    </div> -->
   </section>
 
   <section class="popup">
@@ -88,6 +92,22 @@
       </button>
     </div>
   </section>
+
+  <section class="popup">
+    <div class="popup__container">
+      <p class="popup__header">Новое место</p>
+      <form name="traveler-info" class="popup__wrapper-name-description">
+        <input class="popup__name" type="text" name="name">
+        <input class="popup__description" type="text" name="description">
+        <button type="submit" class="popup__button">Создать</button>
+      </form>
+      <button class="popup__close">
+        <img class="popup__button-img" src="./images/close.svg" alt="крестик">
+      </button>
+    </div>
+  </section>
+
+  
 
   <footer class="footer">
     <p class="footer__text">&copy; 2020 Mesto Russia</p>
