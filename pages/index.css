@@ -11,11 +11,11 @@
 @import url(../blocks/footer/__text/footer__text.css);
 @import url(../blocks/header/__logo/header__logo.css);
 @import url(../blocks/place/__img/place__img.css);
+@import url(../blocks/place/__cart/place__cart.css);
 @import url(../blocks/place/__like-name-wrap/place__like-name-wrap.css);
 @import url(../blocks/places/places.css);
 @import url(../blocks/place/__like/place__like.css);
 @import url(../blocks/place/__name/place__name.css);
-@import url(../blocks/place/__cart/place__cart.css);
 @import url(../blocks/popup/__button/popup__button.css);
 @import url(../blocks/popup/__button-img/popup__button-img.css);
 @import url(../blocks/popup/__close/popup__close.css);
