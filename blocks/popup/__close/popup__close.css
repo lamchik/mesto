@@ -1,7 +1,7 @@
 .popup__close {
     position: absolute;
     top: -50px;
-    right: -50px;
+    right: -55px;
     background: rgba(0, 0, 0, 0);
     border: none;
     transition: .2s linear;

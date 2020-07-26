@@ -34,3 +34,7 @@
 @import url(../blocks/profile/__info-name/profile__info-name.css);
 @import url(../blocks/profile/__info/profile__info.css);
 @import url(../blocks/profile/__wraper-info-description/profile__wraper-info-description.css);
+@import url(../blocks/popup-card/__title/popup-card__title.css.css);
+@import url(../blocks/popup-card/__img/popup-card__img.css);
+@import url(../blocks/popup-card/popup-card.css);
+@import url(../blocks/popup-card/__wrap/popup-card__wrap.css);
