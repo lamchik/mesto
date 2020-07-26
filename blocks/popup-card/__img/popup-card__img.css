@@ -1,11 +1,4 @@
 .popup-card__img {
-    width: 816px;
-    min-height: 540px;
-}
-
-@media all and (max-width: 500px) {
-    .popup__container {
-        width: 240px;
-        min-height: 290px;
-    }
+    max-width: 75vw;
+    max-height: 75vh;
 }

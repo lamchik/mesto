@@ -12,6 +12,9 @@ const closePlaceButton = document.querySelector('#popup-place .popup__close');
 const placeNameInput = document.querySelector('#popup-place .popup__name');
 const placeImageInput = document.querySelector('#popup-place .popup__description');
 const formPlace = document.querySelector('#popup-place .popup__wrapper-name-description');
+const closeFullPlace = document.querySelector('#popup-card .popup__close');
+const popupCard = document.querySelector('.popup-card');
+
 
 
 
@@ -58,6 +61,7 @@ ProfileAddButton.addEventListener('click', addPopupPlace);
 closePlaceButton.addEventListener('click', closePopupPlace);
 
 
+
 function addPlace(image, title, alt) {
     const place = createPlace(image, title, alt);
 
@@ -73,7 +77,25 @@ function addPlace(image, title, alt) {
     const cart = firstPlace.querySelector('.place__cart');
     cart.addEventListener('click', deletePlace);
 
+    const placeImg = firstPlace.querySelector('.place__img');
+    function addPopupCard() {
+        popupCard.querySelector('.popup-card__img').src = image;
+        popupCard.querySelector('.popup-card__img').alt = alt;
+        popupCard.querySelector('.popup-card__title').textContent = title;
+        popupCard.classList.add('popup-card_opened');
+    };
+
+    placeImg.addEventListener('click', addPopupCard);
+    
 };
+
+function closePlace() {
+    popupCard.classList.remove('popup-card_opened');
+};
+
+closeFullPlace.addEventListener('click', closePlace);
+
+
 
 function saveNewPlace(evt) {
     evt.preventDefault()
@@ -141,6 +163,7 @@ const allPlaces = [
 for (let i = allPlaces.length - 1; i >= 0; i -= 1) {
     addPlace(allPlaces[i].image, allPlaces[i].title, allPlaces[i].alt);
 };
+
 
 
 
