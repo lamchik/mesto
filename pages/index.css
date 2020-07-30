@@ -29,8 +29,10 @@
 @import url(../blocks/popup-card/__img/popup-card__img.css);
 @import url(../blocks/popup-card/popup-card.css);
 @import url(../blocks/popup-card/__wrap/popup-card__wrap.css);
-@import url(../blocks/popup/_opened/popup_opened.css);
-@import url(../blocks/popup-card/_opened/popup-card_opened.css);
+@import url(../blocks/popup-card/__close/popup-card__close.css);
+@import url(../blocks/popup-card/__button-img/popup-card__button-img.css);
+@import url(../blocks/popup-state/popup-state.css);
+@import url(../blocks/popup-state/_opened/popup-state_opened.css);
 @import url(../blocks/profile/__add-button/profile__add-button.css);
 @import url(../blocks/profile/__avatar-info-wrapper/profile__avatar-info-wrapper.css);
 @import url(../blocks/profile/__avatar/profile__avatar.css);

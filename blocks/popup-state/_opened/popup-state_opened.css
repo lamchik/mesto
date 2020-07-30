@@ -1,4 +1,4 @@
-.popup-card_opened {
+.popup-state_opened{
     visibility: visible;
     opacity: 1;
 }
