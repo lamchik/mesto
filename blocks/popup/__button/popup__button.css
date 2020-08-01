@@ -17,3 +17,9 @@
 .popup__button:hover {
     background-color: rgba(0, 0, 0, 0.8);
 }
+
+@media all and (max-width: 500px) {
+    .popup__button {
+        height: 40px;
+    }
+}

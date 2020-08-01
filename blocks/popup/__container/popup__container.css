@@ -12,7 +12,7 @@
 /* в макете не было адаптива для попапа, поэтому сделала по-своему */
 @media all and (max-width: 500px) {
     .popup__container {
-        width: 282px;
+        width: 240px;
         min-height: 250px;
     }
 }

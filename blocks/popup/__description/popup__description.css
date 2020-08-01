@@ -8,3 +8,9 @@
 .popup__description:focus {
     outline: none;
 }
+
+@media all and (max-width: 500px) {
+    .popup__description {
+        margin-bottom: 36px;
+    }
+}
