@@ -64,13 +64,6 @@ function addPlace(image, title, alt) {
 
     const places = section.querySelectorAll('.place');
     const firstPlace = places[0];
-    // function deletePlace() {
-    //     firstPlace.remove();
-    // }
-    
-    // const cart = firstPlace.querySelector('.place__cart');
-    // cart.addEventListener('click', deletePlace);
-
     const placeImg = firstPlace.querySelector('.place__img');
     function addPopupCard() {
         const img = popupCard.querySelector('.popup-card__img');
@@ -114,11 +107,12 @@ function createPlace(image, title, alt) {
     }
     like.addEventListener('click', likedCard);
 
-    console.log(place.querySelector(".place__cart"))
+    const removePlace = place.querySelector(".place__cart");
     places = document.querySelector(".places")
-    place.querySelector(".place__cart").addEventListener("click", function(){
-        places.removeChild(place)
+    removePlace.addEventListener("click", function(e){
+        e.target.closest('.place').remove();
     })
+    
    
     return place;
 }

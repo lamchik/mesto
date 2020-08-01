@@ -4,4 +4,11 @@
     height: 18px;
     background-repeat: no-repeat;
     cursor: pointer;
+    border: none;
+    padding: 0;
+    background-color: rgba(1, 1, 1, 0)
+}
+
+.place__like:focus {
+    outline: 0;
 }
