@@ -12,6 +12,7 @@
     border-radius: 2px;
     transition: .2s linear;
     cursor: pointer;
+    margin-top: 19px;
 }
 
 .popup__button:hover {
@@ -21,5 +22,6 @@
 @media all and (max-width: 500px) {
     .popup__button {
         height: 40px;
+        margin-top: 10px;
     }
 }

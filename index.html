@@ -48,9 +48,15 @@
   <section class="popup popup-state" id="popup-name">
     <div class="popup__container">
       <p class="popup__header">Редактировать профиль</p>
-      <form name="traveler-info" class="popup__wrapper-name-description">
-        <input class="popup__name" type="text" name="name">
-        <input class="popup__description" type="text" name="description">
+      <form name="traveler-info" class="popup__form" novalidate>
+        <div class="popup__input-wrap">
+          <input id="popup__input-name" class="popup__input" type="text" name="name" minlength="2" maxlength="40" required>
+          <span id="popup__input-name-error" class="popup__input-error"></span>
+        </div>
+        <div class="popup__input-wrap">
+          <input class="popup__input" id="popup__input-description" type="text" name="description" minlength="2" maxlength="200" required>
+          <span id="popup__input-description-error" class="popup__input-error"></span>
+        </div>
         <button type="submit" class="popup__button">Сохранить</button>
       </form>
       <button class="popup__close">
@@ -62,9 +68,15 @@
   <section class="popup popup-state" id="popup-place">
     <div class="popup__container">
       <p class="popup__header">Новое место</p>
-      <form name="traveler-info" class="popup__wrapper-name-description">
-        <input class="popup__name" type="text" name="name" placeholder="Название">
-        <input class="popup__description" type="text" name="description" placeholder="Ссылка на карточку">
+      <form name="traveler-info" class="popup__form" novalidate>
+        <div class="popup__input-wrap">
+          <input class="popup__input" id="popup__input-title" type="text" name="title" placeholder="Название" minlength="1" maxlength="30" required>
+          <span id="popup__input-title-error" class="popup__input-error"></span>
+        </div>
+        <div class="popup__input-wrap">
+          <input class="popup__input" id="popup__input-link" type="url" name="link" placeholder="Ссылка на карточку" required>
+          <span id="popup__input-link-error" class="popup__input-error"></span>
+        </div>
         <button type="submit" class="popup__button">Создать</button>
       </form>
       <button class="popup__close">
@@ -90,6 +102,7 @@
   </footer>
 
   <script src="scripts/script.js"></script>
+  <script src="scripts/validation.js"></script>
   <script src="scripts/popups.js"></script>
   <script src="scripts/initial-cards.js"></script>
 </body>

@@ -1,4 +1,4 @@
-.popup__wrapper-name-description {
+.popup__form {
     display: flex;
     flex-direction: column;
 }

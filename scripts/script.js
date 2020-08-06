@@ -30,3 +30,4 @@ function addPlace(image, title, alt) {
     const section = document.querySelector('.places');
     section.prepend(place);
 };
+
