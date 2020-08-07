@@ -15,17 +15,25 @@ function overlayClickCallback(event) {
     }
 }
 
+const inputClassError = document.querySelector('.popup__input_error');
 function openPopup(popup) {
     popup.classList.add('popup-state_opened');
     document.addEventListener('keydown', escCallback);
     popup.addEventListener('click', overlayClickCallback);
+    const formInPopup = popup.querySelector('.popup__form')
+    if (formInPopup !== null) {
+        cleanErrors(formInPopup, 'popup__input_error', '.popup__input')
+    }
 }
 
 function closePopup(popup) {
     popup.classList.remove('popup-state_opened');
     document.removeEventListener('keydown', escCallback);
     popup.removeEventListener('click', overlayClickCallback);
+
 }
+
+
 
 // Everything related to popup that changes the name
 const name = document.querySelector('.profile__info-name');

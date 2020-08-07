@@ -19,6 +19,12 @@ const isValid = (formElement, inputElement, inputErrorClass) => {
     }
 };
 
+function cleanErrors(formElement, inputErrorClass, inputSelector) {
+    const inputList = Array.from(formElement.querySelectorAll(inputSelector));
+    inputList.forEach((inputElement) => {
+        hideInputError(formElement, inputElement, inputErrorClass)
+    })
+}
 
 const hasInvalidInput = (inputList) => {
     return inputList.some((inputElement) => {
