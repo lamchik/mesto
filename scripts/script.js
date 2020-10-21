@@ -69,10 +69,10 @@ function addPopupPlace() {
     placeValidator.enableValidation();
 }
 
+const section = document.querySelector('.places');
+
 function addPlace(image, title, alt) {        
     const card = new Card(image, title, alt, '#place');
-
-    const section = document.querySelector('.places');
     section.prepend(card.getCard());
 };
 
