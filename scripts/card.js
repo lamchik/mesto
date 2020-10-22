@@ -1,5 +1,7 @@
 
 import { openPopup } from './popup.js';
+const popupCard = document.querySelector('.popup-card');
+
 
 export class Card {
     constructor(image, title, alt, templateSelector) {
@@ -18,7 +20,6 @@ export class Card {
     }
 
     _addPopupCard() {
-        const popupCard = document.querySelector('.popup-card');
         const popupImg = popupCard.querySelector('.popup-card__img');
         popupImg.src = this._image;
         popupImg.alt = this._alt;

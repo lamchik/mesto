@@ -136,7 +136,7 @@ const allPlaces = [
 allPlaces.reverse().forEach(function(item) {
     const newCard = new Card(item.image, item.title, item.alt, '#place');
     const cardElement = newCard.getCard();
-    document.querySelector('.places').prepend(cardElement);
+    section.prepend(cardElement);
 })
 
 
