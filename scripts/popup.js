@@ -1,23 +1,23 @@
 export class Popup {
     constructor(popupSelector, closeButtonSelector) {
-        this._popupSelector = document.querySelector(popupSelector);
+        this._popup = document.querySelector(popupSelector);
         this._handleEscCloseBinded = this._handleEscClose.bind(this);
         this._overlayClickCallbackBinded = this._overlayClickCallback.bind(this);
-        this._popupCardCloseButton = this._popupSelector.querySelector(closeButtonSelector);
+        this._popupCardCloseButton = this._popup.querySelector(closeButtonSelector);
         this._closeButtonCallback = () => this.closePopup();
     }
 
     openPopup() {
-        this._popupSelector.classList.add('popup-state_opened');
+        this._popup.classList.add('popup-state_opened');
         document.addEventListener('keydown', this._handleEscCloseBinded);
-        this._popupSelector.addEventListener('click', this._overlayClickCallbackBinded);
+        this._popup.addEventListener('click', this._overlayClickCallbackBinded);
         this.setEventListeners();
     }
 
     closePopup() {
-        this._popupSelector.classList.remove('popup-state_opened');
+        this._popup.classList.remove('popup-state_opened');
         document.removeEventListener('keydown', this._handleEscCloseBinded);
-        this._popupSelector.removeEventListener('click', this._overlayClickCallbackBinded);
+        this._popup.removeEventListener('click', this._overlayClickCallbackBinded);
         this._popupCardCloseButton.removeEventListener('click', this._closeButtonCallback);
     }
 

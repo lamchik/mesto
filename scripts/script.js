@@ -1,20 +1,17 @@
 import { Card } from './card.js';
 import { FormValidator } from './formValidator.js';
-import { openPopup, closePopup, Popup} from './popup.js';
 import { PopupWithImage } from './popupWithImage.js';
+import { PopupWithForm } from './popupWithForm.js'
+import { UserInfo } from './userInfo.js'
 
 
 
 // Everything related to popup that changes the name
-const name = document.querySelector('.profile__info-name');
-const description = document.querySelector('.profile__info-description');
 const profileInfoEdit = document.querySelector('.profile__info-edit');
 
 const formName = document.querySelector('.popup__form');
-const popupName = document.querySelector('#popup-name');
 const nameInput = document.querySelector('.popup__input');
 const descriptionInput = document.querySelector('#popup__input-description');
-const closeNamePopupButton = document.querySelector('#popup-name .popup__close');
 
 const defaultSettings = {
     formSelector: '.popup__form',
@@ -24,55 +21,56 @@ const defaultSettings = {
     inputErrorClass: 'popup__input_error',
 }
 
-const nameValidator = new FormValidator(defaultSettings, formName);
-const popupNameInstance = new Popup('#popup-name', '.popup__close');
-
-function addPopupName() {
-    // openPopup(popupName);
-    popupNameInstance.openPopup();
-    nameInput.value = name.textContent;
-    descriptionInput.value = description.textContent;
-    nameValidator.enableValidation();
-};
-
+const userInfo = new UserInfo({
+    nameSelector: '.profile__info-name',
+    descriptionSelector: '.profile__info-description'
+})
 
 function saveName(evt) {
     evt.preventDefault()
-    if (nameInput.value !== '') {
-        name.textContent = nameInput.value;
-    };
-    if (descriptionInput.value !== '') {
-        description.textContent = descriptionInput.value;
-    };
-
-    // closePopup(popupName);
-    popupNameInstance.closePopup();
+    
+    userInfo.setUserInfo(nameInput.value, descriptionInput.value)
+    saveNameForm.closePopup();
 };
+const saveNameForm = new PopupWithForm(saveName, () => {}, '#popup-name', '.popup__close');
 
+const nameValidator = new FormValidator(defaultSettings, formName);
 
+function addPopupName() {
+    const info = userInfo.getUserInfo();
+    nameInput.value = info.name;
+    descriptionInput.value = info.description;
+    saveNameForm.openPopup();
+    nameValidator.enableValidation();
+};
 profileInfoEdit.addEventListener('click', addPopupName);
 
-// closeNamePopupButton.addEventListener('click', function(){
-//     popupNameInstance.closePopup();
-// });
-
-formName.addEventListener('submit', saveName)
 
 // Everything related to popup that adds place
 const addPlaceButton = document.querySelector('.profile__add-button');
-const closePlaceButton = document.querySelector('#popup-place .popup__close');
-const popupPlace = document.querySelector('#popup-place');
 const formPlace = document.querySelector('#popup-place .popup__form');
 const placeNameInput = document.querySelector('#popup__input-title');
 const placeImageInput = document.querySelector('#popup__input-link');
 
 const placeValidator = new FormValidator(defaultSettings, formPlace);
-const popupPlaceInstance = new Popup('#popup-place', '.popup__close');
+
+function saveNewPlace(evt) {
+    evt.preventDefault()
+    const name = placeNameInput.value;
+    const image = placeImageInput.value;
+    addPlace(image, name, name);
+    popupPlaceInstance.closePopup();
+}
+
+const closePlaceForm = () => {
+    placeNameInput.value = '';
+    placeImageInput.value = '';
+}
+ 
+const popupPlaceInstance = new PopupWithForm(saveNewPlace, closePlaceForm, '#popup-place', '.popup__close')
 
 function addPopupPlace() {
     popupPlaceInstance.openPopup()
-    placeNameInput.value = '';
-    placeImageInput.value = '';
     placeValidator.enableValidation();
 }
 
@@ -90,25 +88,7 @@ function addPlace(image, title, alt) {
     section.prepend(card.getCard());
 };
 
-function saveNewPlace(evt) {
-    evt.preventDefault()
-    const name = placeNameInput.value;
-    const image = placeImageInput.value;
-    addPlace(image, name, name);
-    popupPlaceInstance.closePopup();
-}
-
 addPlaceButton.addEventListener('click', addPopupPlace);
-
-// closePlaceButton.addEventListener('click', function(){
-//     popupPlaceInstance.closePopup()
-// });
-
-formPlace.addEventListener('submit', saveNewPlace);
-
-
-// Everything related to card popup (popup that shows the single place)
-// 
 
 
 const allPlaces = [
@@ -154,4 +134,5 @@ allPlaces.reverse().forEach(function(item) {
 
 
 
-    
+
+

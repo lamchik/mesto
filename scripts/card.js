@@ -19,14 +19,6 @@ export class Card {
         this._imageObject.alt = this._alt;
         this._template.querySelector('.place__name').textContent = this._title;
     }
-
-    // _addPopupCard() {
-    //     const popupImg = popupCard.querySelector('.popup-card__img');
-    //     popupImg.src = this._image;
-    //     popupImg.alt = this._alt;
-    //     popupCard.querySelector('.popup-card__title').textContent = this._title;
-    //     openPopup(popupCard)
-    // }
     
     _addListeners() {
         const like = this._template.querySelector('.place__like');
