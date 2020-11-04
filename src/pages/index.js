@@ -1,11 +1,11 @@
 import './index.css'; // добавьте импорт главного файла стилей
 
-import { Card } from '../components/card.js';
-import { FormValidator } from '../components/formValidator.js';
-import { PopupWithImage } from '../components/popupWithImage.js';
-import { PopupWithForm } from '../components/popupWithForm.js';
-import { UserInfo } from '../components/userInfo.js';
-import { Section } from '../components/section.js'
+import { Card } from '../components/Card.js';
+import { FormValidator } from '../components/FormValidator.js';
+import { PopupWithImage } from '../components/PopupWithImage.js';
+import { PopupWithForm } from '../components/PopupWithForm.js';
+import { UserInfo } from '../components/UserInfo.js';
+import { Section } from '../components/Section.js'
 
 
 

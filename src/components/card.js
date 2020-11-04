@@ -1,8 +1,3 @@
-
-// import { openPopup } from './popupWithImage.js';
-const popupCard = document.querySelector('.popup-card');
-
-
 export class Card {
     constructor(image, title, alt, templateSelector, handleCardClick) {
         this._image = image;
