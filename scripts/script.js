@@ -1,6 +1,8 @@
 import { Card } from './card.js';
 import { FormValidator } from './formValidator.js';
-import { openPopup, closePopup} from './popup.js';
+import { openPopup, closePopup, Popup} from './popup.js';
+import { PopupWithImage } from './popupWithImage.js';
+
 
 
 // Everything related to popup that changes the name
@@ -23,9 +25,11 @@ const defaultSettings = {
 }
 
 const nameValidator = new FormValidator(defaultSettings, formName);
+const popupNameInstance = new Popup('#popup-name', '.popup__close');
 
 function addPopupName() {
-    openPopup(popupName);
+    // openPopup(popupName);
+    popupNameInstance.openPopup();
     nameInput.value = name.textContent;
     descriptionInput.value = description.textContent;
     nameValidator.enableValidation();
@@ -41,15 +45,16 @@ function saveName(evt) {
         description.textContent = descriptionInput.value;
     };
 
-    closePopup(popupName);
+    // closePopup(popupName);
+    popupNameInstance.closePopup();
 };
 
 
 profileInfoEdit.addEventListener('click', addPopupName);
 
-closeNamePopupButton.addEventListener('click', function(){
-    closePopup(popupName);
-});
+// closeNamePopupButton.addEventListener('click', function(){
+//     popupNameInstance.closePopup();
+// });
 
 formName.addEventListener('submit', saveName)
 
@@ -62,8 +67,10 @@ const placeNameInput = document.querySelector('#popup__input-title');
 const placeImageInput = document.querySelector('#popup__input-link');
 
 const placeValidator = new FormValidator(defaultSettings, formPlace);
+const popupPlaceInstance = new Popup('#popup-place', '.popup__close');
+
 function addPopupPlace() {
-    openPopup(popupPlace)
+    popupPlaceInstance.openPopup()
     placeNameInput.value = '';
     placeImageInput.value = '';
     placeValidator.enableValidation();
@@ -71,8 +78,15 @@ function addPopupPlace() {
 
 const section = document.querySelector('.places');
 
+
+const cardClickHandler = (image, title, alt) => {
+    const popupCard = new PopupWithImage(image, title, alt, "#popup-card", '.popup-card__close')
+    popupCard.openPopup()
+}
+
+
 function addPlace(image, title, alt) {        
-    const card = new Card(image, title, alt, '#place');
+    const card = new Card(image, title, alt, '#place', cardClickHandler);
     section.prepend(card.getCard());
 };
 
@@ -81,24 +95,21 @@ function saveNewPlace(evt) {
     const name = placeNameInput.value;
     const image = placeImageInput.value;
     addPlace(image, name, name);
-    closePopup(popupPlace);
+    popupPlaceInstance.closePopup();
 }
 
 addPlaceButton.addEventListener('click', addPopupPlace);
-closePlaceButton.addEventListener('click', function(){
-    closePopup(popupPlace)
-});
+
+// closePlaceButton.addEventListener('click', function(){
+//     popupPlaceInstance.closePopup()
+// });
+
 formPlace.addEventListener('submit', saveNewPlace);
 
 
 // Everything related to card popup (popup that shows the single place)
-const popupCard = document.querySelector('.popup-card');
-const popupCardCloseButton = document.querySelector('#popup-card .popup-card__close');
+// 
 
-
-popupCardCloseButton.addEventListener('click', function(){
-    closePopup(popupCard)
-});
 
 const allPlaces = [
     {
@@ -134,7 +145,7 @@ const allPlaces = [
 ];
 
 allPlaces.reverse().forEach(function(item) {
-    const newCard = new Card(item.image, item.title, item.alt, '#place');
+    const newCard = new Card(item.image, item.title, item.alt, '#place', cardClickHandler);
     const cardElement = newCard.getCard();
     section.prepend(cardElement);
 })
