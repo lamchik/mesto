@@ -1,8 +1,11 @@
+import '../pages/index.css'; // добавьте импорт главного файла стилей
+
 import { Card } from './card.js';
 import { FormValidator } from './formValidator.js';
 import { PopupWithImage } from './popupWithImage.js';
-import { PopupWithForm } from './popupWithForm.js'
-import { UserInfo } from './userInfo.js'
+import { PopupWithForm } from './popupWithForm.js';
+import { UserInfo } from './userInfo.js';
+import { Section } from './section.js'
 
 
 
@@ -28,7 +31,7 @@ const userInfo = new UserInfo({
 
 function saveName(evt) {
     evt.preventDefault()
-    
+
     userInfo.setUserInfo(nameInput.value, descriptionInput.value)
     saveNameForm.closePopup();
 };
@@ -90,49 +93,50 @@ function addPlace(image, title, alt) {
 
 addPlaceButton.addEventListener('click', addPopupPlace);
 
-
+import baikal from '../images/baikal.jpg'
+import elbrus from '../images/elbrus.jpg'
+import laugavegur from '../images/laugavegur.jpg'
+import faroe from '../images/faroe.jpg'
+import maldives from '../images/maldives.jpg'
+import niagarafalls from '../images/niagarafalls.jpg'
 const allPlaces = [
     {
         title: 'Озеро Байкал',
-        image: './images/baikal.jpg',
+        image: baikal,
         alt: 'Байкал'
     },
     {
         title: 'Гора Эльбрус',
-        image: './images/elbrus.jpg',
+        image: elbrus,
         alt: 'Эльбрус'
     },
     {
         title: 'Лёйгавегюр',
-        image: './images/laugavegur.jpg',
+        image: laugavegur,
         alt: 'Лёйгавегюр'
     },
     {
         title: 'Фарерские острова',
-        image: './images/faroe.jpg',
+        image: faroe,
         alt: 'Фарерские острова'
     },
     {
         title: 'Мальдивы',
-        image: './images/maldives.jpg',
+        image: maldives,
         alt: 'Мальдивы'
     },
     {
         title: 'Ниагарский водопад',
-        image: './images/niagarafalls.jpg',
+        image: niagarafalls,
         alt: 'Ниагарский водопад'
     },
 ];
 
-allPlaces.reverse().forEach(function(item) {
-    const newCard = new Card(item.image, item.title, item.alt, '#place', cardClickHandler);
-    const cardElement = newCard.getCard();
-    section.prepend(cardElement);
-})
-
-
-
-
-
-
-
+const cards = new Section({
+    items: allPlaces,
+    renderer: (item) => {
+        const card = new Card(item.image, item.title, item.alt, '#place', cardClickHandler);
+        cards.addItem(card.getCard())
+    }
+}, '.places')
+cards.renderItems()
