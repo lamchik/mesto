@@ -5,7 +5,8 @@ import { FormValidator } from '../components/FormValidator.js';
 import { PopupWithImage } from '../components/PopupWithImage.js';
 import { PopupWithForm } from '../components/PopupWithForm.js';
 import { UserInfo } from '../components/UserInfo.js';
-import { Section } from '../components/Section.js'
+import { Section } from '../components/Section.js';
+import { defaultSettings, allPlaces } from '../utils/constants.js';
 
 
 
@@ -16,35 +17,28 @@ const formName = document.querySelector('.popup__form');
 const nameInput = document.querySelector('.popup__input');
 const descriptionInput = document.querySelector('#popup__input-description');
 
-const defaultSettings = {
-    formSelector: '.popup__form',
-    inputSelector: '.popup__input',
-    submitButtonSelector: '.popup__button',
-    inactiveButtonClass: 'popup__button_inactive',
-    inputErrorClass: 'popup__input_error',
-}
 
 const userInfo = new UserInfo({
     nameSelector: '.profile__info-name',
     descriptionSelector: '.profile__info-description'
 })
 
-function saveName(evt) {
-    evt.preventDefault()
-
-    userInfo.setUserInfo(nameInput.value, descriptionInput.value)
+function saveName({name, description}) {
+    userInfo.setUserInfo(name, description)
     saveNameForm.closePopup();
 };
 const saveNameForm = new PopupWithForm(saveName, () => {}, '#popup-name', '.popup__close');
 
 const nameValidator = new FormValidator(defaultSettings, formName);
+nameValidator.enableValidation();
 
 function addPopupName() {
     const info = userInfo.getUserInfo();
     nameInput.value = info.name;
     descriptionInput.value = info.description;
     saveNameForm.openPopup();
-    nameValidator.enableValidation();
+    saveNameForm.setEventListeners();
+    nameValidator.resetValidation();
 };
 profileInfoEdit.addEventListener('click', addPopupName);
 
@@ -56,12 +50,10 @@ const placeNameInput = document.querySelector('#popup__input-title');
 const placeImageInput = document.querySelector('#popup__input-link');
 
 const placeValidator = new FormValidator(defaultSettings, formPlace);
+placeValidator.enableValidation();
 
-function saveNewPlace(evt) {
-    evt.preventDefault()
-    const name = placeNameInput.value;
-    const image = placeImageInput.value;
-    addPlace(image, name, name);
+function saveNewPlace({title, link}) {
+    addPlace(link, title, title);
     popupPlaceInstance.closePopup();
 }
 
@@ -73,16 +65,18 @@ const closePlaceForm = () => {
 const popupPlaceInstance = new PopupWithForm(saveNewPlace, closePlaceForm, '#popup-place', '.popup__close')
 
 function addPopupPlace() {
-    popupPlaceInstance.openPopup()
-    placeValidator.enableValidation();
+    popupPlaceInstance.setEventListeners();
+    popupPlaceInstance.openPopup();
+    placeValidator.resetValidation();
 }
 
 const section = document.querySelector('.places');
 
+const popupCard = new PopupWithImage("#popup-card", '.popup-card__close')
 
 const cardClickHandler = (image, title, alt) => {
-    const popupCard = new PopupWithImage(image, title, alt, "#popup-card", '.popup-card__close')
-    popupCard.openPopup()
+    popupCard.openPopup(image, title, alt);
+    popupCard.setEventListeners();
 }
 
 
@@ -92,45 +86,6 @@ function addPlace(image, title, alt) {
 };
 
 addPlaceButton.addEventListener('click', addPopupPlace);
-
-import baikal from '../images/baikal.jpg'
-import elbrus from '../images/elbrus.jpg'
-import laugavegur from '../images/laugavegur.jpg'
-import faroe from '../images/faroe.jpg'
-import maldives from '../images/maldives.jpg'
-import niagarafalls from '../images/niagarafalls.jpg'
-const allPlaces = [
-    {
-        title: 'Озеро Байкал',
-        image: baikal,
-        alt: 'Байкал'
-    },
-    {
-        title: 'Гора Эльбрус',
-        image: elbrus,
-        alt: 'Эльбрус'
-    },
-    {
-        title: 'Лёйгавегюр',
-        image: laugavegur,
-        alt: 'Лёйгавегюр'
-    },
-    {
-        title: 'Фарерские острова',
-        image: faroe,
-        alt: 'Фарерские острова'
-    },
-    {
-        title: 'Мальдивы',
-        image: maldives,
-        alt: 'Мальдивы'
-    },
-    {
-        title: 'Ниагарский водопад',
-        image: niagarafalls,
-        alt: 'Ниагарский водопад'
-    },
-];
 
 const cards = new Section({
     items: allPlaces,

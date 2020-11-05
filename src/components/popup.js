@@ -9,16 +9,10 @@ export class Popup {
 
     openPopup() {
         this._popup.classList.add('popup-state_opened');
-        document.addEventListener('keydown', this._handleEscCloseBinded);
-        this._popup.addEventListener('click', this._overlayClickCallbackBinded);
-        this.setEventListeners();
     }
 
     closePopup() {
         this._popup.classList.remove('popup-state_opened');
-        document.removeEventListener('keydown', this._handleEscCloseBinded);
-        this._popup.removeEventListener('click', this._overlayClickCallbackBinded);
-        this._popupCardCloseButton.removeEventListener('click', this._closeButtonCallback);
     }
 
     _handleEscClose(event) {
@@ -29,7 +23,9 @@ export class Popup {
     }
 
     setEventListeners() {
+        this._popup.addEventListener('click', this._overlayClickCallbackBinded);
         this._popupCardCloseButton.addEventListener('click', this._closeButtonCallback);
+        document.addEventListener('keydown', this._handleEscCloseBinded);
     }
 
 
