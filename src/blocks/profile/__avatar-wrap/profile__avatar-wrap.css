@@ -1,0 +1,19 @@
+.profile__avatar-wrap{
+    min-width: 120px;
+    min-height: 120px;
+    position: relative;
+
+}
+.profile__avatar-wrap:hover::after{
+    content: '';
+    background-image: url(../../../images/pen.svg);
+    background-repeat: no-repeat;
+    background-size: 26px;
+    width: 27px;
+    height: 29px;
+    position: absolute;
+    top: 50px;
+    left: 50px;
+    opacity: 1;
+    pointer-events: none;
+}

@@ -14,7 +14,9 @@
 
   <section class="profile">
     <div class="profile__avatar-info-wrapper">
-      <img class="profile__avatar" src="./images/avatar.jpg" alt="фото профиля">
+      <div class="profile__avatar-wrap">
+          <img class="profile__avatar" src="./images/avatar.jpg" alt="фото профиля">
+      </div>
       <div class="profile__wraper-info-description">
         <div class="profile__info">
           <h1 class="profile__info-name">Жак-Ив Кусто</h1>
@@ -47,7 +49,7 @@
 
   <section class="popup popup-state" id="popup-name">
     <div class="popup__container">
-      <p class="popup__header">Редактировать профиль</p>
+      <p class="popup__header popup__header_size_l">Редактировать профиль</p>
       <form name="traveler-info" class="popup__form" novalidate>
         <div class="popup__input-wrap">
           <input id="popup__input-name" class="popup__input" type="text" name="name" minlength="2" maxlength="40" required>
@@ -57,7 +59,7 @@
           <input class="popup__input" id="popup__input-description" type="text" name="description" minlength="2" maxlength="200" required>
           <span id="popup__input-description-error" class="popup__input-error"></span>
         </div>
-        <button type="submit" class="popup__button">Сохранить</button>
+        <button type="submit" class="popup__button popup__button_size_l">Сохранить</button>
       </form>
       <button class="popup__close">
         <img class="popup__button-img" src="./images/close.svg" alt="крестик">
@@ -66,8 +68,8 @@
   </section>
 
   <section class="popup popup-state" id="popup-place">
-    <div class="popup__container">
-      <p class="popup__header">Новое место</p>
+    <div class="popup__container popup__container_size_l">
+      <p class="popup__header popup__header_size_l">Новое место</p>
       <form name="traveler-info" class="popup__form" novalidate>
         <div class="popup__input-wrap">
           <input class="popup__input" id="popup__input-title" type="text" name="title" placeholder="Название" minlength="1" maxlength="30" required>
@@ -77,7 +79,34 @@
           <input class="popup__input" id="popup__input-link" type="url" name="link" placeholder="Ссылка на карточку" required>
           <span id="popup__input-link-error" class="popup__input-error"></span>
         </div>
-        <button type="submit" class="popup__button">Создать</button>
+        <button type="submit" class="popup__button popup__button_size_l">Создать</button>
+      </form>
+      <button class="popup__close">
+        <img class="popup__button-img" src="./images/close.svg" alt="крестик">
+      </button>
+    </div>
+  </section>
+
+  <section class="popup popup-state" id="popup-user">
+    <div class="popup__container popup__container_size_m">
+      <p class="popup__header popup__header_size_l">Обновить аватар</p>
+      <form name="traveler-info" class="popup__form" novalidate>
+        <div class="popup__input-wrap">
+          <input class="popup__input" id="popup__input-title" type="text" name="title" placeholder="https://somewebsite.com/someimage.jpg" minlength="1" maxlength="30" required>
+          <span id="popup__input-title-error" class="popup__input-error"></span>
+        </div>
+        <button type="submit" class="popup__button popup__button_size_l">Сохранить</button>
+      </form>
+      <button class="popup__close">
+        <img class="popup__button-img" src="./images/close.svg" alt="крестик">
+      </button>
+    </div>
+  </section>
+
+  <section class="popup popup-state" id="popup-delete">
+    <div class="popup__container popup__container_size_s">
+      <p class="popup__header popup__header_size_s">Вы уверены?</p>        
+        <button type="submit" class="popup__button popup__button_size_s">Да</button>
       </form>
       <button class="popup__close">
         <img class="popup__button-img" src="./images/close.svg" alt="крестик">

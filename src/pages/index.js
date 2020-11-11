@@ -7,6 +7,7 @@ import { PopupWithForm } from '../components/PopupWithForm.js';
 import { UserInfo } from '../components/UserInfo.js';
 import { Section } from '../components/Section.js';
 import { defaultSettings, allPlaces } from '../utils/constants.js';
+import { Api } from '../api/Api.js';
 
 
 
@@ -20,11 +21,25 @@ const descriptionInput = document.querySelector('#popup__input-description');
 
 const userInfo = new UserInfo({
     nameSelector: '.profile__info-name',
-    descriptionSelector: '.profile__info-description'
+    descriptionSelector: '.profile__info-description',
+    imageSelector: '.profile__avatar'
 })
 
+const editUserApi = new Api({
+    url: "https://mesto.nomoreparties.co/v1/cohort-17/users/me",
+    headers: {
+        "Content-Type" : "application/json",
+        authorization: "9b68a7b1-3b8f-4ce8-9813-2e4457640daa"
+    }
+});
+
 function saveName({name, description}) {
-    userInfo.setUserInfo(name, description)
+    editUserApi.editUser(name, description).then((data) => {
+        userInfo.setUserInfo(name, description, data.avatar)
+    }
+
+    )
+    
     saveNameForm.closePopup();
 };
 const saveNameForm = new PopupWithForm(saveName, () => {}, '#popup-name', '.popup__close');
@@ -54,8 +69,18 @@ const placeImageInput = document.querySelector('#popup__input-link');
 const placeValidator = new FormValidator(defaultSettings, formPlace);
 placeValidator.enableValidation();
 
-function saveNewPlace({title, link}) {
-    addPlace(link, title, title);
+const createCardsApi = new Api({
+    url: 'https://mesto.nomoreparties.co/v1/cohort-17/cards',
+    headers: {
+        "Content-Type" : "application/json",
+        authorization: "9b68a7b1-3b8f-4ce8-9813-2e4457640daa"
+    },
+});
+
+function saveNewPlace(obj) {
+    createCardsApi.createCard(obj.title, obj.link).then(() => {
+        addPlace(obj.link, obj.title, obj.title);
+    })
     popupPlaceInstance.closePopup();
 }
 
@@ -85,17 +110,49 @@ const cardClickHandler = (image, title, alt) => {
 
 
 function addPlace(image, title, alt) {        
-    const card = new Card(image, title, alt, '#place', cardClickHandler);
+    const card = new Card(image, title, alt, '#place', cardClickHandler, true);
     section.prepend(card.getCard());
 };
 
 addPlaceButton.addEventListener('click', addPopupPlace);
 
-const cards = new Section({
-    items: allPlaces,
-    renderer: (item) => {
-        const card = new Card(item.image, item.title, item.alt, '#place', cardClickHandler);
-        cards.addItem(card.getCard())
+
+const userApi = new Api({
+    url: "https://mesto.nomoreparties.co/v1/cohort-17/users/me",
+    headers: {
+        "Content-Type" : "application/json",
+        authorization: "9b68a7b1-3b8f-4ce8-9813-2e4457640daa"
     }
-}, '.places')
-cards.renderItems()
+});
+
+
+userApi.getUser().then((data) => {
+    userInfo.setUserInfo(data.name, data.about, data.avatar)
+});
+
+
+const cardsApi = new Api({
+    url: 'https://mesto.nomoreparties.co/v1/cohort-17/cards',
+    headers: {
+        "Content-Type" : "application/json",
+        authorization: "9b68a7b1-3b8f-4ce8-9813-2e4457640daa"
+    }
+});
+
+
+cardsApi.getCard().then((data) => {
+    
+    const cards = new Section({
+        items: data,
+        renderer: (item) => {
+            const card = new Card(item.link, item.name, item.alt, '#place', cardClickHandler, item.owner._id === '6ae7895942a907e86bc8d8a3');
+            cards.addItem(card.getCard())
+            
+        }
+    }, '.places')
+    cards.renderItems();
+})
+
+
+
+
