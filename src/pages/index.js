@@ -8,6 +8,7 @@ import { UserInfo } from '../components/UserInfo.js';
 import { Section } from '../components/Section.js';
 import { defaultSettings, allPlaces } from '../utils/constants.js';
 import { Api } from '../api/Api.js';
+import { Popup } from '../components/Popup';
 
 
 
@@ -17,6 +18,14 @@ const profileInfoEdit = document.querySelector('.profile__info-edit');
 const formName = document.querySelector('.popup__form');
 const nameInput = document.querySelector('.popup__input');
 const descriptionInput = document.querySelector('#popup__input-description');
+const editAvatar = document.querySelector('.profile__avatar-wrap');
+const popupEditAvatar = document.querySelector('#popup-edit-user');
+
+editAvatar.addEventListener('click', () => {
+    const editAvatarUSer = new Popup('#popup-edit-user', '.popup__close');
+    editAvatarUSer.setEventListeners()
+    editAvatarUSer.openPopup();
+})
 
 
 const deletePopup = new PopupWithForm(() => {}, () => {}, '#popup-delete', '.popup__close');

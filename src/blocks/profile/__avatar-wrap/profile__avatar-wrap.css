@@ -2,6 +2,7 @@
     min-width: 120px;
     min-height: 120px;
     position: relative;
+    border-radius: 50%;
 
 }
 .profile__avatar-wrap:hover::after{

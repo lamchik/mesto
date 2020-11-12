@@ -42,6 +42,18 @@ export class Api {
         }) 
     }
 
+    editAvatarUser(url) {
+        return fetch(this.url, {
+            method: 'PATCH',
+            headers: this.headers,
+          }).then(res => {
+            if (res.ok) {
+                return res.json();
+            }
+            return Promise.reject(`Ошибка: ${res.status}`);
+        }) 
+    }
+
     createCard(name, link) {
         return fetch(this.url, {
             method: 'POST',
