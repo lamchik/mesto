@@ -19,6 +19,9 @@ const nameInput = document.querySelector('.popup__input');
 const descriptionInput = document.querySelector('#popup__input-description');
 
 
+const deletePopup = new PopupWithForm(() => {}, () => {}, '#popup-delete', '.popup__close');
+deletePopup.setEventListeners();
+
 const userInfo = new UserInfo({
     nameSelector: '.profile__info-name',
     descriptionSelector: '.profile__info-description',
@@ -78,8 +81,8 @@ const createCardsApi = new Api({
 });
 
 function saveNewPlace(obj) {
-    createCardsApi.createCard(obj.title, obj.link).then(() => {
-        addPlace(obj.link, obj.title, obj.title);
+    createCardsApi.createCard(obj.title, obj.link).then((data) => {
+        addPlace(data.link, data.name, data.name, data._id);
     })
     popupPlaceInstance.closePopup();
 }
@@ -109,8 +112,8 @@ const cardClickHandler = (image, title, alt) => {
 }
 
 
-function addPlace(image, title, alt) {        
-    const card = new Card(image, title, alt, '#place', cardClickHandler, true);
+function addPlace(image, title, alt, id) {        
+    const card = new Card(image, title, alt, id, '#place', cardClickHandler, true, deletePopup);
     section.prepend(card.getCard());
 };
 
@@ -145,14 +148,13 @@ cardsApi.getCard().then((data) => {
     const cards = new Section({
         items: data,
         renderer: (item) => {
-            const card = new Card(item.link, item.name, item.alt, '#place', cardClickHandler, item.owner._id === '6ae7895942a907e86bc8d8a3');
+            const card = new Card(item.link, item.name, item.alt, item._id, '#place', cardClickHandler, item.owner._id === '6ae7895942a907e86bc8d8a3', deletePopup);
             cards.addItem(card.getCard())
             
         }
     }, '.places')
     cards.renderItems();
 })
-
 
 
 

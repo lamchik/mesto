@@ -32,6 +32,10 @@ export class PopupWithForm extends Popup {
         this._closeForm()
     }
 
+    setOnSubmitHandler(handler) {
+        this._onSubmitHandler = handler
+    }
+
 }
 
 
