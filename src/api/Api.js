@@ -42,10 +42,11 @@ export class Api {
         }) 
     }
 
-    editAvatarUser(url) {
+    editAvatarUser(avatar) {
         return fetch(this.url, {
             method: 'PATCH',
             headers: this.headers,
+            body: JSON.stringify({avatar})
           }).then(res => {
             if (res.ok) {
                 return res.json();

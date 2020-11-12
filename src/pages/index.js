@@ -11,7 +11,11 @@ import { Api } from '../api/Api.js';
 import { Popup } from '../components/Popup';
 
 
-
+const userInfo = new UserInfo({
+    nameSelector: '.profile__info-name',
+    descriptionSelector: '.profile__info-description',
+    imageSelector: '.profile__avatar'
+})
 // Everything related to popup that changes the name
 const profileInfoEdit = document.querySelector('.profile__info-edit');
 
@@ -21,21 +25,33 @@ const descriptionInput = document.querySelector('#popup__input-description');
 const editAvatar = document.querySelector('.profile__avatar-wrap');
 const popupEditAvatar = document.querySelector('#popup-edit-user');
 
+const avatarUserApi = new Api({
+    url: "https://mesto.nomoreparties.co/v1/cohort-17/users/me/avatar",
+    headers: {
+        "Content-Type" : "application/json",
+        authorization: "9b68a7b1-3b8f-4ce8-9813-2e4457640daa"
+    }
+});
+
+function saveAvatar({link}){ 
+    avatarUserApi.editAvatarUser(link).then((data) => {
+        userInfo.setUserInfo(data.name, data.about, data.avatar)
+    })
+   edit.closePopup();
+}
+
+const edit = new PopupWithForm(saveAvatar, () => {}, '#popup-edit-user', '.popup__close');
+
 editAvatar.addEventListener('click', () => {
-    const editAvatarUSer = new Popup('#popup-edit-user', '.popup__close');
-    editAvatarUSer.setEventListeners()
-    editAvatarUSer.openPopup();
+    edit.setEventListeners()
+    edit.openPopup();
 })
 
 
 const deletePopup = new PopupWithForm(() => {}, () => {}, '#popup-delete', '.popup__close');
 deletePopup.setEventListeners();
 
-const userInfo = new UserInfo({
-    nameSelector: '.profile__info-name',
-    descriptionSelector: '.profile__info-description',
-    imageSelector: '.profile__avatar'
-})
+
 
 const editUserApi = new Api({
     url: "https://mesto.nomoreparties.co/v1/cohort-17/users/me",
@@ -151,7 +167,6 @@ const cardsApi = new Api({
     }
 });
 
-
 cardsApi.getCard().then((data) => {
     
     const cards = new Section({
@@ -164,6 +179,7 @@ cardsApi.getCard().then((data) => {
     }, '.places')
     cards.renderItems();
 })
+
 
 
 
