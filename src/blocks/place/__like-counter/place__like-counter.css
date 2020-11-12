@@ -1,0 +1,8 @@
+.place__like-counter {
+    margin: 0;
+    font-family: 'Inter', 'Arial', sans-serif;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 15.7px;
+    margin-left: 6px;
+}
