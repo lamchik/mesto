@@ -27,6 +27,19 @@ export class PopupWithForm extends Popup {
         })
     }
 
+    setLoading() {
+        const button = this._form.querySelector(".popup__button")
+        button.disabled = true
+        this._buttonNote = button.textContent
+        button.textContent = "Сохранение..."
+    }
+
+    unsetLoading() {
+        const button = this._form.querySelector(".popup__button")
+        button.disabled = false
+        button.textContent = this._buttonNote
+    }
+
     closePopup() {
         super.closePopup()
         this._closeForm()
