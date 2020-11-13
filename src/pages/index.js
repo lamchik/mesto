@@ -21,6 +21,7 @@ const formName = document.querySelector('.popup__form');
 const nameInput = document.querySelector('.popup__input');
 const descriptionInput = document.querySelector('#popup__input-description');
 const editAvatar = document.querySelector('.profile__avatar-wrap');
+const formAvatar = document.querySelector('#popup-edit-user .popup__form');
 
 const api = new Api({
   url: 'https://mesto.nomoreparties.co/v1/cohort-17',
@@ -85,6 +86,9 @@ function saveName({ name, description }) {
       console.log(err);
     });
 }
+
+const avatarValidator = new FormValidator(defaultSettings, formAvatar);
+avatarValidator.enableValidation();
 
 const nameValidator = new FormValidator(defaultSettings, formName);
 nameValidator.enableValidation();
