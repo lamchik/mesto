@@ -15,7 +15,7 @@ export class Api {
     });
   }
 
-  getCard() {
+  getCards() {
     return fetch(`${this.url}/cards`, {
       headers: this.headers
     }).then(res => {

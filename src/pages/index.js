@@ -132,6 +132,7 @@ function saveNewPlace(obj) {
       addPlace(data.link, data.name, data.name, data._id);
       popupPlaceInstance.closePopup();
       popupPlaceInstance.unsetLoading();
+      
     })
     .catch(err => {
       console.log(err);
@@ -143,8 +144,6 @@ function addPopupPlace() {
   placeValidator.resetValidation();
 }
 
-const section = document.querySelector('.places');
-
 const popupCard = new PopupWithImage('#popup-card', '.popup-card__close');
 popupCard.setEventListeners();
 
@@ -152,58 +151,71 @@ const cardClickHandler = (image, title, alt) => {
   popupCard.openPopup(image, title, alt);
 };
 
+const cardsSection = new Section(
+  {
+    renderer: item => {
+      const card = new Card(
+        api,
+        item.link,
+        item.name,
+        item.alt,
+        item.id,
+        item.profileId,
+        '#place',
+        cardClickHandler,
+        item.owner === item.profileId,
+        deletePopup,
+        item.likes
+      );
+      cardsSection.addItem(card.getCard(), true);
+    }
+  },
+  '.places'
+);
+
 function addPlace(image, title, alt, id) {
+  const userData = userInfo.getUserInfo();
   const card = new Card(
     api,
     image,
     title,
     alt,
     id,
+    userData.id,
     '#place',
     cardClickHandler,
     true,
     deletePopup,
     []
   );
-  section.prepend(card.getCard());
+  cardsSection.addItem(card.getCard(), false);
 }
 
 addPlaceButton.addEventListener('click', addPopupPlace);
 
-api
-  .getUser()
+Promise.all([api.getUser(), api.getCards()])
   .then(data => {
-    userInfo.setUserInfo(data.name, data.about, data.avatar);
-  })
-  .catch(err => {
-    console.log(err);
-  });
-
-api
-  .getCard()
-  .then(data => {
-    const cards = new Section(
-      {
-        items: data,
-        renderer: item => {
-          const card = new Card(
-            api,
-            item.link,
-            item.name,
-            item.alt,
-            item._id,
-            '#place',
-            cardClickHandler,
-            item.owner._id === '6ae7895942a907e86bc8d8a3',
-            deletePopup,
-            item.likes
-          );
-          cards.addItem(card.getCard());
-        }
-      },
-      '.places'
+    const [userData, cardsFromApi] = data;
+    userInfo.setUserInfo(
+      userData.name,
+      userData.about,
+      userData.avatar,
+      userData._id
     );
-    cards.renderItems();
+
+    const items = cardsFromApi.map(card => {
+      return {
+        link: card.link,
+        name: card.name,
+        alt: card.name,
+        id: card._id,
+        profileId: userData._id,
+        likes: card.likes,
+        owner: card.owner._id
+      };
+    });
+
+    cardsSection.renderItems(items);
   })
   .catch(err => {
     console.log(err);
